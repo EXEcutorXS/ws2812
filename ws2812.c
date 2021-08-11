@@ -25,12 +25,6 @@ void wsMultiply(uint8_t num, float k)
 	cBuffer[num].blue*=k;
 }
 
-void swInit(void)
-{
-int i;
-for(i=0;i<ARRAY_LEN;i++)
-	wsBuffer[i]=0;
-}
 
 void wsPrepareArray()
 {
@@ -41,9 +35,9 @@ void wsPrepareArray()
 	for(i=0;i<LED_COUNT*3;i++)
 	for(j=7;j>=0;j--)
 		if (*adr++)
-      wsBuffer[i*8+j]=65;
+      wsBuffer[i*8+j]=HIGH;
 		else
-	  wsBuffer[i*8+j]=26;
+	  wsBuffer[i*8+j]=LOW;
 }
 
 void wsInit(TIM_HandleTypeDef * tim, uint32_t chan)
@@ -60,7 +54,7 @@ void wsShiftLed(color_t newColor)
 {
 	uint8_t i;
 
-	for(i=LED_COUNT;i>0;i--)
+	for(i=LED_COUNT-1;i>0;i--)
 		cBuffer[i]=cBuffer[i-1];
 	cBuffer[0]=newColor;
 	wsPrepareArray();
