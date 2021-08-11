@@ -32,7 +32,7 @@ uint8_t blue;
 void wsSetColor(uint8_t num, uint8_t red, uint8_t green, uint8_t blue);
 void swInit(void);
 void wsPrepareArray(void);
-void wsRefreshLeds(TIM_HandleTypeDef * tim, uint32_t chan);
+void wsInit(TIM_HandleTypeDef * tim, uint32_t chan);
 uint32_t * getBitBanded(uint32_t * adr,uint8_t bit);
 void wsShiftLed(color_t newColor);
 void wsDoubleBright(uint8_t num);

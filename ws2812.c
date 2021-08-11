@@ -46,7 +46,7 @@ void wsPrepareArray()
 	  wsBuffer[i*8+j]=26;
 }
 
-void wsRefreshLeds(TIM_HandleTypeDef * tim, uint32_t chan)
+void wsInit(TIM_HandleTypeDef * tim, uint32_t chan)
 {
 	HAL_TIM_PWM_Start_DMA(tim, chan, (uint32_t*)wsBuffer, ARRAY_LEN);
 }
